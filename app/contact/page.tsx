@@ -1,3 +1,9 @@
+interface FormInputProps {
+    label: string;
+    type: string;
+    placeholder: string;
+    required?: boolean;
+}
 interface ContactInfoProps {
     icon: React.ReactNode;
     title: string;
@@ -86,7 +92,7 @@ const ContactInfo = ({ icon, title, content }: ContactInfoProps) => (
 );
 
 // Reusable component for form inputs
-const FormInput = ({ label, type, placeholder, required = false }) => (
+const FormInput = ({ label, type, placeholder, required = false }: FormInputProps) => (
     <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
             {label} {required && <span className="text-red-500">*</span>}
