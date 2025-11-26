@@ -64,7 +64,7 @@ export default function ContactPage() {
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Message (Optional)</label>
-                        <textarea rows={4} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 focus:ring-sayada-slate focus:border-sayada-slate"></textarea>
+                        <textarea name="Message" rows={4} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 focus:ring-sayada-slate focus:border-sayada-slate"></textarea>
                     </div>
 
                     <button type="submit" className="w-full py-3 px-4 bg-sayada-slate text-white font-semibold rounded-md hover:bg-sayada-blue transition-colors shadow-md">
@@ -93,6 +93,7 @@ const ContactInfo = ({ icon, title, content }: ContactInfoProps) => (
 );
 
 // Reusable component for form inputs
+// Reusable component for form inputs (REPLACED)
 const FormInput = ({ label, type, placeholder, required = false }: FormInputProps) => (
     <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -100,6 +101,8 @@ const FormInput = ({ label, type, placeholder, required = false }: FormInputProp
         </label>
         <input 
             type={type} 
+            // This line passes the label as the field name for Web3Forms/server
+            name={label} 
             placeholder={placeholder}
             required={required}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 focus:ring-sayada-slate focus:border-sayada-slate" 
