@@ -1,3 +1,8 @@
+interface ContactInfoProps {
+    icon: React.ReactNode;
+    title: string;
+    content: string;
+}
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
@@ -68,7 +73,7 @@ export default function ContactPage() {
 }
 
 // Reusable component for displaying contact details
-const ContactInfo = ({ icon, title, content }) => (
+const ContactInfo = ({ icon, title, content }: ContactInfoProps) => (
     <div className="flex items-start gap-4">
         <div className="mt-1 text-sayada-mist flex-shrink-0">
             {icon}
