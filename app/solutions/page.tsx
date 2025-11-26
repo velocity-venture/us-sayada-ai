@@ -1,3 +1,7 @@
+interface ModuleCardProps {
+    title: string;
+    icon: React.ReactNode;
+}
 import { Briefcase, Gavel, Heart, TrendingUp } from "lucide-react";
 
 export default function SolutionsPage() {
@@ -61,7 +65,7 @@ export default function SolutionsPage() {
 }
 
 // Reusable card component for the modules (placed at the bottom of the file)
-const ModuleCard = ({ title, icon }) => (
+const ModuleCard = ({ title, icon }: ModuleCardProps) => (
     <div className="p-4 text-center bg-gray-50 border border-gray-200 rounded-lg hover:border-sayada-slate transition-colors">
         <div className="text-sayada-graphite mb-2 mx-auto w-fit">
             {icon}
