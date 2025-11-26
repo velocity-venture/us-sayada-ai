@@ -46,7 +46,8 @@ export default function ContactPage() {
                    It must be integrated with a backend service (e.g., HubSpot, Salesforce, Next.js API) 
                    for actual lead capture and routing. */}
                 
-                <form className="space-y-6">
+                <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
+		<input type="hidden" name="access_key" value="9bf4be73-10f1-48da-b1aa-1623e7053316" />
                     <FormInput label="Full Name" type="text" placeholder="John Doe" />
                     <FormInput label="Work Email" type="email" placeholder="work@enterprise.com" required />
                     <FormInput label="Organization / Company Name" type="text" placeholder="Global Dynamics Inc." required />
