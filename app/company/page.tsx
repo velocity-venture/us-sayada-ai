@@ -1,3 +1,8 @@
+interface PrincipleCardProps {
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+}
 import { Target, Lightbulb, Zap, CheckCircle, TrendingUp } from "lucide-react";
 
 export default function CompanyPage() {
@@ -66,7 +71,7 @@ export default function CompanyPage() {
 }
 
 // Reusable card component for principles (placed at the bottom of the file)
-const PrincipleCard = ({ title, description, icon }) => (
+const PrincipleCard = ({ title, description, icon }: PrincipleCardProps) => (
     <div className="text-center p-4">
         <div className="text-sayada-slate mx-auto w-fit mb-3">
             {icon}
