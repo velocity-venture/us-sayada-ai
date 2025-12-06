@@ -14,7 +14,7 @@ export default function Home() {
               <span className="block">Velocity Venture Holdings, LLC</span>
             </div>
 <h1 className="text-4xl font-bold">Intelligence at the Speed of Business</h1>
-<p className="text-lg text-gray-600">From solo consultants to Fortune 500—automate the noise, scale the wins.</p>
+<p className="text-lg text-gray-600 mt-2 text-center">From solo consultants to Fortune 500—automate the noise, scale the wins.</p>
             <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
               We empower organizations with intelligent tools, strategic insight, and automated systems that unlock growth and enhance performance.
             </p>
