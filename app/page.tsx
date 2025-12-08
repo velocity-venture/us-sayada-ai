@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 // Importing professional icons (lucide-react) for a clean, modern aesthetic
 import { ArrowRight, BarChart3, Cpu, Layers } from "lucide-react";
