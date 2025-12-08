@@ -2,11 +2,10 @@
 import Link from "next/link";
 // Importing professional icons (lucide-react) for a clean, modern aesthetic
 import { ArrowRight, BarChart3, Cpu, Layers } from "lucide-react";
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      
+     
       {/* Hero Section: Slogan and Primary Value Proposition */}
       <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-28 overflow-hidden bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -29,7 +28,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+       
         {/* Abstract Background Element - Reinforcing data-driven theme without neon */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 opacity-5 pointer-events-none">
            <svg width="600" height="600" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -37,12 +36,11 @@ export default function Home() {
             </svg>
         </div>
       </section>
-
       {/* The Trinity: Core Services Overview */}
       <section className="py-24 bg-sayada-cloud">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            
+           
             {/* Card 1: Intelligence */}
             <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 text-sayada-blue">
@@ -58,7 +56,6 @@ export default function Home() {
                 <li className="flex gap-2"><span>•</span> Industry Trends & Predictive Insights</li>
               </ul>
             </div>
-
             {/* Card 2: Operations */}
             <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 text-sayada-blue">
@@ -74,7 +71,6 @@ export default function Home() {
                 <li className="flex gap-2"><span>•</span> Compliance and Reporting</li>
               </ul>
             </div>
-
             {/* Card 3: Strategy */}
             <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 text-sayada-blue">
@@ -90,23 +86,28 @@ export default function Home() {
                 <li className="flex gap-2"><span>•</span> Risk Assessment & Execution Planning</li>
               </ul>
             </div>
-
           </div>
         </div>
       </section>
+      <div className="text-center mt-8">
+        <button 
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={async () => {
+            try {
+              const res = await fetch('https://sayada-backend.onrender.com/api/health');
+              if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+              }
+              const data = await res.json();
+              alert('Connected: ' + JSON.stringify(data));
+            } catch (e: any) {
+              alert('Error: ' + e.message);
+            }
+          }}
+        >
+          Join Beta – 14 Days Free
+        </button>
+      </div>
     </main>
   );
 }
-<div className="text-center mt-8">
-  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={async () => {
-  try {
-    const res = await fetch('https://sayada-backend.onrender.com/api/health');
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    const data = await res.json();
-    alert('Connected: ' + JSON.stringify(data));
-  } catch (e: any) {
-    alert('Error: ' + e.message);
-  }
-}}
