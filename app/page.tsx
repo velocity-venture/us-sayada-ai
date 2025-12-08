@@ -97,5 +97,5 @@ export default function Home() {
   );
 }
 <div className="text-center mt-8">
-  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={async () => { try { const res = await fetch('https://sayada-backend.onrender.com/api/health'); const data = await res.json(); alert('Connected: ' + JSON.stringify(data)); } cacatch (e: any) tch (e) { alert('Error: ' + e.message); } }}>Join Beta – 14 Days Free</button>
+  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={async () => { try { const res = await fetch('https://sayada-backend.onrender.com/api/health'); const data = await res.json(); alert('Connected: ' + JSON.stringify(data)); } catch (e: any) { alert('Error: ' + e.message); } }}>Join Beta – 14 Days Free</button>
 </div>
