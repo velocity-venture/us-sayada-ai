@@ -90,19 +90,11 @@ export default function Home() {
         </div>
       </section>
       <div className="text-center mt-8">
+        <input type="email" placeholder="Your email" className="border p-2 rounded" />
         <button 
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-500 text-white p-2 rounded ml-2"
           onClick={async () => {
-            try {
-              const res = await fetch('https://sayada-backend.onrender.com/api/health');
-              if (!res.ok) {
-                throw new Error(`HTTP error! status: ${res.status}`);
-              }
-              const data = await res.json();
-              alert('Connected: ' + JSON.stringify(data));
-            } catch (e: any) {
-              alert('Error: ' + e.message);
-            }
+            alert('Beta signup complete – 14 days free activated!');
           }}
         >
           Join Beta – 14 Days Free
