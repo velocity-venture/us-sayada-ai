@@ -1,8 +1,37 @@
 'use client'
+import { useState } from "react";
 import Link from "next/link";
-// Importing professional icons (lucide-react) for a clean, modern aesthetic
-import { ArrowRight, BarChart3, Cpu, Layers } from "lucide-react";
+import { ArrowRight, BarChart3, Cpu, Layers, CheckCircle, Loader2 } from "lucide-react";
+
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [betaStatus, setBetaStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleBetaSignup = async () => {
+    if (!email.trim() || !email.includes("@")) return;
+    setBetaStatus("loading");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+          email,
+          subject: "New Beta Signup — Sayada.ai US",
+          from_name: "Sayada.ai Beta Form",
+        }),
+      });
+      if (res.ok) {
+        setBetaStatus("success");
+        setEmail("");
+      } else {
+        setBetaStatus("error");
+      }
+    } catch {
+      setBetaStatus("error");
+    }
+  };
   return (
     <main className="flex min-h-screen flex-col">
      
@@ -89,17 +118,43 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <div className="text-center mt-8">
-        <input type="email" placeholder="Your email" className="border p-2 rounded" />
-        <button 
-          className="bg-blue-500 text-white p-2 rounded ml-2"
-          onClick={async () => {
-            alert('Beta signup complete – 14 days free activated!');
-          }}
-        >
-          Join Beta – 14 Days Free
-        </button>
-      </div>
+      {/* Beta Signup CTA */}
+      <section className="py-20 bg-white">
+        <div className="max-w-xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-sayada-graphite mb-4">Start Your 14-Day Free Trial</h2>
+          <p className="text-gray-600 mb-8">No credit card required. Get full access to our intelligence platform.</p>
+          {betaStatus === "success" ? (
+            <div className="flex items-center justify-center gap-2 text-green-600 font-medium">
+              <CheckCircle size={20} />
+              <span>You&apos;re in! Check your email for next steps.</span>
+            </div>
+          ) : (
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <input
+                type="email"
+                placeholder="Your work email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleBetaSignup()}
+                className="px-4 py-3 border border-gray-300 rounded-lg text-base focus:ring-2 focus:ring-sayada-slate focus:border-sayada-slate outline-none flex-1 max-w-sm"
+              />
+              <button
+                className="px-6 py-3 bg-sayada-blue text-white rounded-lg font-semibold hover:bg-sayada-slate transition-colors shadow-md disabled:opacity-50 flex items-center justify-center gap-2"
+                onClick={handleBetaSignup}
+                disabled={betaStatus === "loading" || !email.includes("@")}
+              >
+                {betaStatus === "loading" ? (
+                  <Loader2 size={18} className="animate-spin" />
+                ) : null}
+                Join Beta — 14 Days Free
+              </button>
+            </div>
+          )}
+          {betaStatus === "error" && (
+            <p className="text-red-500 text-sm mt-3">Something went wrong. Please try again or contact sales@us.sayada.ai.</p>
+          )}
+        </div>
+      </section>
     </main>
   );
 }

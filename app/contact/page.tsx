@@ -33,7 +33,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold mb-6">Contact Details</h2>
                 <div className="space-y-6">
                     <ContactInfo icon={<Mail size={20} />} title="Sales Inquiries" content="sales@us.sayada.ai" />
-                    <ContactInfo icon={<Phone size={20} />} title="Operational Support" content="+1 (555) Sayada" />
+                    <ContactInfo icon={<Phone size={20} />} title="Operational Support" content="sales@us.sayada.ai" />
                     <ContactInfo icon={<MapPin size={20} />} title="Corporate Office" content="A Velocity Venture Holdings Company, US Base" />
                 </div>
             </div>
@@ -47,14 +47,15 @@ export default function ContactPage() {
                    for actual lead capture and routing. */}
                 
                 <form action="https://api.web3forms.com/submit" method="POST" className="space-y-6">
-		<input type="hidden" name="access_key" value="9bf4be73-10f1-48da-b1aa-1623e7053316" />
+		<input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_KEY || ""} />
+		<input type="hidden" name="subject" value="New Contact Request — Sayada.ai US" />
                     <FormInput label="Full Name" type="text" placeholder="John Doe" />
                     <FormInput label="Work Email" type="email" placeholder="work@enterprise.com" required />
                     <FormInput label="Organization / Company Name" type="text" placeholder="Global Dynamics Inc." required />
                     
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">I am interested in...</label>
-                        <select className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 focus:ring-sayada-slate focus:border-sayada-slate">
+                        <select name="Interest" className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-3 px-4 focus:ring-sayada-slate focus:border-sayada-slate">
                             <option>Enterprise AI Platform Access</option>
                             <option>Consultant/Partner Program</option>
                             <option>Government/Public Sector Solution</option>
